@@ -1,0 +1,358 @@
+@keyframes textLoading {
+  0% {
+    transform: translateY(0px);
+  }
+  40% {
+    transform: translateY(-40px);
+  }
+  80%,
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes circleLoading {
+  0% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scale(0.2);
+  }
+}
+@keyframes barLoading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes endScreen1 {
+  0% {
+    display: block;
+    left: 0;
+  }
+  100% {
+    display: none;
+    left: -100%;
+  }
+}
+@keyframes endScreen2 {
+  0% {
+    display: block;
+    right: 0;
+  }
+  100% {
+    display: none;
+    right: -100%;
+  }
+}
+@keyframes textMove1 {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 30%;
+  }
+}
+@keyframes textMove2 {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 20%;
+  }
+}
+:root {
+  --bg-color: #fff;
+  --bg-main: #f0f2f5;
+  --blue: #00aeef;
+  --red: #e91e63;
+  --green: #009879;
+  --text-color-2: #6a6a6a;
+  --text-color: #000;
+  --nav-size: 70px;
+  --border-radius: 10px;
+  --font-size-smn: 0.6rem;
+  --font-size-mn: 0.8rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 4rem;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+html {
+  font-family: "Potta One", cursive;
+}
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+/* screen-1 */
+.container-screen-1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  animation: endScreen1 0.8s 1 ease-in;
+  animation-delay: 3.5s;
+  animation-fill-mode: forwards;
+  background-color: var(--bg-color);
+  z-index: 999;
+}
+.screen-1 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.text-loading {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.loading-letter {
+  padding: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: var(--font-size-xxl);
+  color: var(--blue);
+  animation: textLoading 1.5s 2 ease-in-out;
+  animation-delay: calc(var(--value) * 0.1s);
+}
+.circle-loading {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  margin: 20px;
+}
+.circle-loading div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform: rotate(calc(var(--value) * 45deg));
+}
+.circle-loading div::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 4px solid var(--blue);
+  animation: circleLoading 1s 3;
+  animation-delay: calc(var(--value) * 0.125s);
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  opacity: 0;
+}
+.bar-loading {
+  position: relative;
+  margin-top: 30px;
+  height: 15px;
+  width: 250px;
+  background-color: var(--red);
+}
+.bar-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--blue);
+  animation: barLoading 3s 1 ease-in;
+  animation-fill-mode: forwards;
+}
+/* screen-2 */
+.container-screen-2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.screen-2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: endScreen2 0.8s 1 ease-in;
+  animation-delay: 6.5s;
+  animation-fill-mode: forwards;
+  background-color: var(--bg-main);
+  z-index: 998;
+}
+.screen-2 div {
+  font-size: var(--font-size-xxl);
+  position: absolute;
+}
+.text-move-1 {
+  color: var(--red);
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: textMove1 2s 1 ease-in;
+  animation-fill-mode: forwards;
+  animation-delay: 3.5s;
+}
+.text-move-2 {
+  color: var(--blue);
+  right: -100%;
+  top: 45%;
+  animation: textMove2 2s 1 ease-in;
+  animation-fill-mode: forwards;
+  animation-delay: 3.5s;
+}
+/* main */
+main {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.container-input {
+  height: 100%;
+  width: 35%;
+  border-right: 1px solid var(--bg-main);
+}
+.container-output {
+  height: 100%;
+  width: 65%;
+  border-left: 1px solid var(--bg-main);
+}
+nav {
+  height: var(--nav-size);
+  width: 100%;
+  border-bottom: 2px solid var(--bg-main);
+}
+h1 {
+  text-align: center;
+  line-height: var(--nav-size);
+  color: var(--blue);
+}
+form {
+  padding: 50px 30px;
+}
+.form-grounp {
+  margin-bottom: 25px;
+}
+.form-input {
+  height: 50px;
+  padding: 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  outline: none;
+  transition: 0.25s ease;
+}
+.form-input:focus {
+  border-color: var(--blue);
+}
+.form-field {
+  position: relative;
+}
+.form-label {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 21px;
+  user-select: none;
+  color: #999;
+  font-size: var(--font-size-mn);
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+.form-input:not(:placeholder-shown) + .form-label,
+.form-input:focus + .form-label {
+  top: 0;
+  padding: 0 10px;
+  display: inline-block;
+  background-color: var(--bg-color);
+  color: var(--blue);
+}
+.form-radio {
+  cursor: pointer;
+}
+.gender {
+  font-size: var(--font-size-mn);
+  color: var(--blue);
+  margin-left: 5px;
+}
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--blue);
+  font-family: "Potta One", cursive;
+  color: var(--bg-color);
+  cursor: pointer;
+}
+.btn-reset {
+  padding: 10px 23.6px;
+  background-color: var(--red);
+}
+.invalid {
+  border-color: var(--red);
+}
+#error-code,
+#error-name,
+#error-email,
+#error-address,
+#error-gender {
+  color: var(--red);
+  font-size: var(--font-size-smn);
+}
+.hidden {
+  display: none;
+}
+
+/* Danh sách sinh viên */
+.container-table {
+  margin: 25px auto;
+  max-height: 500px;
+  overflow-y: scroll;
+  width: 95%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 100%;
+}
+.styled-table thead tr {
+  background-color: var(--green);
+  color: var(--bg-color);
+  text-align: left;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--green);
+}
+#btnDelete,
+#btnEdit {
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--bg-color);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+#btnDelete {
+  background-color: var(--red);
+}
+#btnEdit {
+  background-color: var(--blue);
+}

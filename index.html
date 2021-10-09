@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sinh viên</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./img/Uneti.png" type="image/x-icon">
+    <!-- gg font potta one -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <!-- style css -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- container -->
+    <div class="container">
+        <!-- screen-1 -->
+        <!-- <div class="container-screen-1">
+            <div class="screen-1">
+                <div class="text-loading">
+                    <div class="loading-letter" style="--value: 1">L</div>
+                    <div class="loading-letter" style="--value: 2">O</div>
+                    <div class="loading-letter" style="--value: 3">A</div>
+                    <div class="loading-letter" style="--value: 4">D</div>
+                    <div class="loading-letter" style="--value: 5">I</div>
+                    <div class="loading-letter" style="--value: 6">N</div>
+                    <div class="loading-letter" style="--value: 7">G</div>
+                    <div class="loading-letter" style="--value: 8">.</div>
+                    <div class="loading-letter" style="--value: 9">.</div>
+                    <div class="loading-letter" style="--value: 10">.</div>
+                </div>
+                <div class="circle-loading">
+                    <div style="--value: 1"></div>
+                    <div style="--value: 2"></div>
+                    <div style="--value: 3"></div>
+                    <div style="--value: 4"></div>
+                    <div style="--value: 5"></div>
+                    <div style="--value: 6"></div>
+                    <div style="--value: 7"></div>
+                    <div style="--value: 8"></div>
+                </div>
+                <div class="bar-loading"></div>
+            </div>
+        </div> -->
+        <!-- end screen-1 -->
+        <!-- end screen-2 -->
+        <!-- <div class="container-screen-2">
+            <div class="screen-2">
+                <div class="text-move-1">
+                    welcome to...
+                </div>
+                <div class="text-move-2">
+                    webside quản lí sinh viên.
+                </div>
+            </div>
+        </div> -->
+        <!-- end screen-2 -->
+        <main>
+            <div class="container-input">
+                <nav>
+                    <h1>Nhập thông tin sinh viên</h1>
+                </nav>
+                <form class="form">
+                    <div class="form-grounp">
+                        <div class="form-field">
+                            <input name="code" type="text" placeholder=" " class="form-input">
+                            <label class="form-label">Mã sinh viên</label>
+                        </div>
+                        <span id="error-code" class="hidden">Mã sv không được bỏ trống!</span>
+                    </div>
+                    <div class="form-grounp">
+                        <div class="form-field">
+                            <input name="name" type="text" placeholder=" " class="form-input">
+                            <label class="form-label">Tên sinh viên</label>
+                        </div>
+                        <span id="error-name" class="hidden">Tên sv không được bỏ trống!</span>
+                    </div>
+                    <div class="form-grounp">
+                        <div class="form-field">
+                            <input name="email" type="text" placeholder=" " class="form-input">
+                            <label class="form-label">Email</label>
+                        </div>
+                        <span id="error-email" class="hidden">Email không được bỏ trống!</span>
+                    </div>
+                    <div class="form-grounp">
+                        <div class="form-field">
+                            <input name="address" type="text" placeholder=" " class="form-input">
+                            <label class="form-label">Địa chỉ</label>
+                        </div>
+                        <span id="error-address" class="hidden">Địa chỉ không được bỏ trống!</span>
+                    </div>
+                    <div class="form-grounp">
+                        <input id="male" value="Nam" name="gender" class="form-radio" type="radio"><label
+                            class="gender">Nam</label>
+                        <input id="famale" value="Nữ" name="gender" class="form-radio" type="radio"><label
+                            class="gender">Nữ</label>
+                        <span id="error-gender" class="hidden">Hãy chọn giới tính!</span>
+                    </div>
+                    <button class="btn btn-submit" type="submit">Submit</button>
+                    <button class="btn btn-reset" type="reset">Reset</button>
+                </form>
+            </div>
+            <div class="container-output">
+                <nav>
+                    <h1>Danh sách sinh viên</h1>
+                </nav>
+                <div class="container-table">
+                    <table id="table" class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã sv</th>
+                                <th>Họ tên</th>
+                                <th>Email</th>
+                                <th>Địa chỉ</th>
+                                <th>Giới tính</th>
+                                <th>Xóa</th>
+                                <th>Sửa</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data"></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- end container -->
+
+    <!-- main js -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
