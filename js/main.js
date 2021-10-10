@@ -45,13 +45,13 @@ const render = () => {
   const data = studentList.map((student, index) => {
     return `
       <tr>
-      <td>${index}</td>
+      <td id="stt">${index + 1}</td>
       <td>${student.codeValue}</td>
-      <td>${student.nameValue}</td>
+      <td class="name">${student.nameValue}</td>
       <td>${student.emailValue}</td>
       <td>${student.addresssValue}</td>
       <td>${student.gender}</td>
-      <td><button id="btnDelete" class="${index}" onclick="deleteF()">Xóa</button></td>
+      <td><button id="btnDelete" onclick="deleteFunc(${index})">Xóa</button></td>
       <td><button id="btnEdit">Sửa</button></td>
       </tr>
     `;
@@ -157,10 +157,9 @@ form.addEventListener("reset", () => {
 });
 
 // Btn xóa thông tin sinh viên
-function deleteF() {
+function deleteFunc(index) {
   if (confirm("Bạn có muốn xóa thông tin sinh viên này không?")) {
-    studentList.splice(studentList[$("#btnDelete").className], 1);
+    studentList.splice(index, 1);
     render();
-    alert("Xóa thành công!");
   }
 }
