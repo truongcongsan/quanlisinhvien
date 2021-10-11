@@ -28,15 +28,22 @@ const studentList = [
     codeValue: "002",
     nameValue: "Trịnh Quốc Khánh",
     emailValue: "khanhkhi@gmail.com",
-    addressValue: "Ninh Bình",
+    addressValue: "Hải Phòng",
     gender: "Nam",
   },
   {
     codeValue: "003",
     nameValue: "Trịnh Bảo Ngọc",
     emailValue: "baongoc@gmail.com",
-    addressValue: "Ninh Bình",
+    addressValue: "Hà Nội",
     gender: "Nữ",
+  },
+  {
+    codeValue: "004",
+    nameValue: "Vừ A Dính",
+    emailValue: "vuadinh@gmail.com",
+    addressValue: "Lai Châu",
+    gender: "Nam",
   },
 ];
 
@@ -62,6 +69,14 @@ const render = () => {
   $("#data").innerHTML = data.join("");
 };
 render();
+
+// Validate Email
+function validateEmail(email) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 // Validate
 const validateInputs = () => {
   isValid = true;
@@ -77,6 +92,13 @@ const validateInputs = () => {
   }
   if (!email.value) {
     email.classList.add("invalid");
+    $(".validate-email").innerHTML = "Email không được bỏ trống!";
+    errorEmail.classList.remove("hidden");
+    isValid = false;
+  }
+  if (!validateEmail(email.value) && email.value) {
+    email.classList.add("invalid");
+    $(".validate-email").innerHTML = "Nhập sai định dạng email!";
     errorEmail.classList.remove("hidden");
     isValid = false;
   }

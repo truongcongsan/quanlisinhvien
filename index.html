@@ -69,31 +69,34 @@
                 <form class="form">
                     <div class="form-grounp">
                         <div class="form-field">
-                            <input name="code" type="text" placeholder=" " class="form-input">
+                            <input name="code" type="text" placeholder=" " class="form-input" minlength="1"
+                                maxlength="10">
                             <label class="form-label">Mã sinh viên</label>
                         </div>
                         <span id="error-code" class="hidden">Mã sv không được bỏ trống!</span>
                     </div>
                     <div class="form-grounp">
                         <div class="form-field">
-                            <input name="name" type="text" placeholder=" " class="form-input">
+                            <input name="name" type="text" placeholder=" " class="form-input" minlength="6"
+                                maxlength="30">
                             <label class="form-label">Tên sinh viên</label>
                         </div>
                         <span id="error-name" class="hidden">Tên sv không được bỏ trống!</span>
                     </div>
                     <div class="form-grounp">
                         <div class="form-field">
-                            <input name="email" type="text" placeholder=" " class="form-input">
+                            <input name="email" type="email" placeholder=" " class="form-input">
                             <label class="form-label">Email</label>
                         </div>
-                        <span id="error-email" class="hidden">Email không được bỏ trống!</span>
+                        <span id="error-email" class="hidden validate-email"></span>
                     </div>
                     <div class="form-grounp">
                         <div class="form-field">
-                            <input name="address" type="text" placeholder=" " class="form-input">
+                            <input name="address" type="text" placeholder=" " class="form-input" minlength="6"
+                                maxlength="30">
                             <label class="form-label">Địa chỉ</label>
                         </div>
-                        <span id="error-address" class="hidden">Địa chỉ không được bỏ trống!</span>
+                        <span id="error-address" class="hidden">Địa chỉ không được bỏ trống</span>
                     </div>
                     <div class="form-grounp">
                         <input id="male" value="Nam" name="gender" class="form-radio" type="radio"><label
