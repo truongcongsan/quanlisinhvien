@@ -16,26 +16,26 @@ const errorGender = $("#error-gender");
 let isValid = false;
 
 // Dữ liệu sinh viên tĩnh
-let studentList = [
+const studentList = [
   {
     codeValue: "001",
     nameValue: "Trịnh Nam Trường",
     emailValue: "xinloiigg@gmail.com",
-    addresssValue: "Ninh Bình",
+    addressValue: "Ninh Bình",
     gender: "Nam",
   },
   {
     codeValue: "002",
     nameValue: "Trịnh Quốc Khánh",
     emailValue: "khanhkhi@gmail.com",
-    addresssValue: "Ninh Bình",
+    addressValue: "Ninh Bình",
     gender: "Nam",
   },
   {
     codeValue: "003",
     nameValue: "Trịnh Bảo Ngọc",
     emailValue: "baongoc@gmail.com",
-    addresssValue: "Ninh Bình",
+    addressValue: "Ninh Bình",
     gender: "Nữ",
   },
 ];
@@ -44,15 +44,18 @@ let studentList = [
 const render = () => {
   const data = studentList.map((student, index) => {
     return `
-      <tr>
-      <td id="stt">${index + 1}</td>
-      <td>${student.codeValue}</td>
-      <td class="name">${student.nameValue}</td>
-      <td>${student.emailValue}</td>
-      <td>${student.addresssValue}</td>
-      <td>${student.gender}</td>
-      <td><button id="btnDelete" onclick="deleteFunc(${index})">Xóa</button></td>
-      <td><button id="btnEdit">Sửa</button></td>
+      <tr id="row${index}">
+        <td>${index + 1}</td>
+        <td>${student.codeValue}</td>
+        <td id="name${index}">${student.nameValue}</td>
+        <td id="email${index}">${student.emailValue}</td>
+        <td id="address${index}">${student.addressValue}</td>
+        <td id="gender${index}">${student.gender}</td>
+        <td><button class="btnDelete" onclick="deleteFunc(${index})">Xóa</button></td>
+        <td>
+          <button class="btnEdit" id="btnEdit${index}" onclick="editFunc(${index})">Sửa</button>
+          <button class="btnSave" id="btnSave${index}" onclick="saveFunc(${index})">Lưu</button>
+        </td>
       </tr>
     `;
   });
@@ -109,7 +112,7 @@ form.addEventListener("submit", (e) => {
     const codeValue = code.value;
     const nameValue = fullName.value;
     const emailValue = email.value;
-    const addresssValue = address.value;
+    const addressValue = address.value;
     let gender = "";
     if ($("#male").checked) {
       gender = $("#male").value;
@@ -122,7 +125,7 @@ form.addEventListener("submit", (e) => {
       codeValue,
       nameValue,
       emailValue,
-      addresssValue,
+      addressValue,
       gender,
     });
     // Hiển thị danh sách sinh viên sau khi thêm mới
@@ -160,6 +163,134 @@ form.addEventListener("reset", () => {
 function deleteFunc(index) {
   if (confirm("Bạn có muốn xóa thông tin sinh viên này không?")) {
     studentList.splice(index, 1);
+    render();
+  }
+}
+
+// Btn sửa thông tin sản phẩm
+function editFunc(index) {
+  $("#btnEdit" + index).style.display = "none";
+  $("#btnSave" + index).style.display = "block";
+
+  //Tạo ra input để chỉnh sửa thông tin
+  $("#name" + index).innerHTML =
+    "<input type='text' class='ip-edit' id='name-txt" +
+    index +
+    "' value='" +
+    studentList[index].nameValue +
+    "'>";
+  $("#email" + index).innerHTML =
+    "<input type='text' class='ip-edit' id='email-txt" +
+    index +
+    "' value='" +
+    studentList[index].emailValue +
+    "'>";
+  $("#address" + index).innerHTML =
+    "<input type='text' class='ip-edit' id='address-txt" +
+    index +
+    "' value='" +
+    studentList[index].addressValue +
+    "'>";
+  $("#gender" + index).innerHTML =
+    "<select value='" +
+    studentList[index].gender +
+    "' id='gender-txt" +
+    index +
+    "'><option>Nam</option><option>Nữ</option></select>";
+}
+
+// Btn lưu thông tin sản phẩm vừa sửa
+function saveFunc(index) {
+  $("#btnSave" + index).style.display = "none";
+  $("#btnEdit" + index).style.display = "block";
+
+  // Lấy giá trị của input và gán cho biến mới
+  var nameValueNew = $("#name-txt" + index).value;
+  var emailValueNew = $("#email-txt" + index).value;
+  var addressValueNew = $("#address-txt" + index).value;
+  var genderValueNew = $("#gender-txt" + index).value;
+
+  // Gán giá trị mới vào mảng
+  studentList[index].nameValue = nameValueNew;
+  studentList[index].emailValue = emailValueNew;
+  studentList[index].addressValue = addressValueNew;
+  studentList[index].gender = genderValueNew;
+
+  // In giá trị vừa lưu vào mảng ra
+  $("#name" + index).innerHTML = studentList[index].nameValue;
+  $("#email" + index).innerHTML = studentList[index].emailValue;
+  $("#address" + index).innerHTML = studentList[index].addressValue;
+  $("#gender" + index).innerHTML = studentList[index].gender;
+}
+
+// Btn tìm kiếm
+function searchInfor() {
+  // Tạo biến lưu giá trị người dùng nhập vào thanh tìm kiếm
+  const searchInput = $(".search").value;
+  // Tạo biến lưu giá trị select người dùng chọn
+  const searchSelect = $("#search-select").value;
+  // Tạo mảng rỗng
+  const arr = [];
+
+  // Nếu người dùng chọn giá trị select là "Mã"
+  if (searchSelect === "Mã") {
+    // Chạy vòng for từ 0 đến độ dài của mảng studentList
+    for (let i = 0; i < studentList.length; i++) {
+      // Nếu giá trị "Mã" của mảng khác giá trị người dùng nhập vào
+      if (studentList[i].codeValue !== searchInput) {
+        //Thêm phần tử i thỏa mãn điều kiện trên vào mảng
+        arr.push(i);
+        // Chạy vòng for từ 0 đến độ dài của mảng arr ở trên
+        for (let j = 0; j < arr.length; j++) {
+          // Ẩn các row có id tương ứng
+          $("#row" + arr[j]).style.display = "none";
+        }
+      }
+    }
+  }
+  if (searchSelect === "Tên") {
+    for (let i = 0; i < studentList.length; i++) {
+      if (studentList[i].nameValue !== searchInput) {
+        arr.push(i);
+        for (let j = 0; j < arr.length; j++) {
+          $("#row" + arr[j]).style.display = "none";
+        }
+      }
+    }
+  }
+
+  if (searchSelect === "Email") {
+    for (let i = 0; i < studentList.length; i++) {
+      if (studentList[i].emailValue !== searchInput) {
+        arr.push(i);
+        for (let j = 0; j < arr.length; j++) {
+          $("#row" + arr[j]).style.display = "none";
+        }
+      }
+    }
+  }
+  if (searchSelect === "Địa chỉ") {
+    for (let i = 0; i < studentList.length; i++) {
+      if (studentList[i].addressValue !== searchInput) {
+        arr.push(i);
+        for (let j = 0; j < arr.length; j++) {
+          $("#row" + arr[j]).style.display = "none";
+        }
+      }
+    }
+  }
+  if (searchSelect === "Giới tính") {
+    for (let i = 0; i < studentList.length; i++) {
+      if (studentList[i].gender !== searchInput) {
+        arr.push(i);
+        for (let j = 0; j < arr.length; j++) {
+          $("#row" + arr[j]).style.display = "none";
+        }
+      }
+    }
+  }
+  // Nếu không nhập gì vào ô tìm kiếm mà vẫn submit tìm kiếm, trả về mảng ban đầu.
+  if (searchInput === "") {
     render();
   }
 }

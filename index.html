@@ -106,8 +106,19 @@
                 </form>
             </div>
             <div class="container-output">
-                <nav>
-                    <h1>Danh sách sinh viên</h1>
+                <nav class="nav-search">
+                    <h1 class="nav-title">Danh sách sinh viên</h1>
+                    <div>
+                        <input class="search" placeholder="Tìm kiếm...">
+                        <select id="search-select">
+                            <option>Mã</option>
+                            <option>Tên</option>
+                            <option>Email</option>
+                            <option>Địa chỉ</option>
+                            <option>Giới tính</option>
+                        </select>
+                        <button class="btn-search" onclick="searchInfor()">Tìm kiếm</button>
+                    </div>
                 </nav>
                 <div class="container-table">
                     <table id="table" class="styled-table">

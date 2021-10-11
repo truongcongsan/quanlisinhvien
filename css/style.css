@@ -215,12 +215,12 @@ main {
 }
 .container-input {
   height: 100%;
-  width: 35%;
+  width: 30%;
   border-right: 1px solid var(--bg-main);
 }
 .container-output {
   height: 100%;
-  width: 65%;
+  width: 70%;
   border-left: 1px solid var(--bg-main);
 }
 nav {
@@ -232,6 +232,30 @@ h1 {
   text-align: center;
   line-height: var(--nav-size);
   color: var(--blue);
+}
+.nav-search{
+  height: var(--nav-size);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.nav-search div{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search{
+  padding: 11px;
+  border: 1px solid var(--blue);
+  outline: none;
+}
+.btn-search{
+  padding: 12px;
+  background-color: var(--blue);
+  color: var(--bg-color);
+  border: none;
+  cursor: pointer;
 }
 form {
   padding: 50px 30px;
@@ -315,7 +339,7 @@ form {
   max-height: 500px;
   overflow-y: scroll;
   width: 95%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
 }
 .styled-table {
   border-collapse: collapse;
@@ -341,8 +365,9 @@ form {
 .styled-table tbody tr:last-of-type {
   border-bottom: 2px solid var(--green);
 }
-#btnDelete,
-#btnEdit {
+.btnDelete,
+.btnEdit,
+.btnSave {
   padding: 10px;
   border-radius: 5px;
   color: var(--bg-color);
@@ -350,9 +375,23 @@ form {
   border: none;
   cursor: pointer;
 }
-#btnDelete {
+.btnDelete {
   background-color: var(--red);
 }
-#btnEdit {
+.btnEdit {
   background-color: var(--blue);
+}
+.btnSave {
+  background-color: var(--green);
+  display: none;
+}
+.ip-edit,
+select{
+  padding: 10px;
+  outline: none;
+  border: 1px solid var(--blue);
+  /* background-color: var(--bg-main); */
+}
+.ip-edit{
+  width: 150px;
 }
