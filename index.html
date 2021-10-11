@@ -20,7 +20,7 @@
     <!-- container -->
     <div class="container">
         <!-- screen-1 -->
-        <!-- <div class="container-screen-1">
+        <div class="container-screen-1">
             <div class="screen-1">
                 <div class="text-loading">
                     <div class="loading-letter" style="--value: 1">L</div>
@@ -46,10 +46,10 @@
                 </div>
                 <div class="bar-loading"></div>
             </div>
-        </div> -->
+        </div>
         <!-- end screen-1 -->
         <!-- end screen-2 -->
-        <!-- <div class="container-screen-2">
+        <div class="container-screen-2">
             <div class="screen-2">
                 <div class="text-move-1">
                     welcome to...
@@ -58,10 +58,11 @@
                     webside quản lí sinh viên.
                 </div>
             </div>
-        </div> -->
+        </div>
         <!-- end screen-2 -->
         <main>
-            <div class="container-input">
+            <div id="container-input" class="move-right">
+                <span onclick="btnHideShow()" id="btn-hide-show" class="arrow-left"></span>
                 <nav>
                     <h1>Nhập thông tin sinh viên</h1>
                 </nav>
@@ -107,6 +108,7 @@
             </div>
             <div class="container-output">
                 <nav class="nav-search">
+
                     <h1 class="nav-title">Danh sách sinh viên</h1>
                     <div>
                         <input class="search" placeholder="Tìm kiếm...">
@@ -119,6 +121,7 @@
                         </select>
                         <button class="btn-search" onclick="searchInfor()">Tìm kiếm</button>
                     </div>
+
                 </nav>
                 <div class="container-table">
                     <table id="table" class="styled-table">

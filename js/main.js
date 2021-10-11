@@ -294,3 +294,24 @@ function searchInfor() {
     render();
   }
 }
+
+//Btn ẩn hiện bảng nhập thông tin
+function btnHideShow() {
+  const btnToggle = $("#btn-hide-show");
+  const moveToggle = $("#container-input");
+
+  btnToggle.classList.toggle("arrow-right");
+  btnToggle.classList.toggle("arrow-left");
+
+  moveToggle.classList.toggle("move-right");
+  moveToggle.classList.toggle("move-left");
+
+  // btnToggle.to.add("arrow-right");
+  // btnToggle.classList.remove("arrow-left");
+
+  // if ((btnToggle = "arrow-right")) {
+  //   btnToggle.classList.add("arrow-left");
+  //   btnToggle.classList.remove("arrow-right");
+
+  // }
+}
