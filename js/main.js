@@ -108,8 +108,8 @@ const validateInputs = () => {
     isValid = false;
   }
   if (!$("#male").checked && !$("#famale").checked) {
-    $("#male").classList.add("invalid");
-    $("#famale").classList.add("invalid");
+    // $("#male").classList.add("invalid");
+    // $("#famale").classList.add("invalid");
     errorGender.classList.remove("hidden");
     isValid = false;
   }
@@ -168,6 +168,10 @@ inputReset(fullName, errorName);
 inputReset(email, errorEmail);
 inputReset(address, errorAddress);
 
+//Reset input radio
+const resetInputRadio = () => {
+  errorGender.classList.add("hidden");
+};
 // Nút reset form
 const formReset = (ip, er) => {
   ip.classList.remove("invalid");
